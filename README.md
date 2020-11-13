@@ -7,7 +7,7 @@
 
 ## Projet
 
-1. Cloner le dépot:
+1. Cloner le dépot
 2. Installer les dépendances:
 
 <p>Exécuter la commande 'npn install'</p>
