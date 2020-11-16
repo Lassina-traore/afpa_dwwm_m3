@@ -10,7 +10,7 @@
 1. Cloner le dépot
 2. Installer les dépendances:
 
-<p>Exécuter la commande 'npm install'</p>
+<p>Exécuter la commande 'npm install -g'</p>
 
 ## Documentation
 
