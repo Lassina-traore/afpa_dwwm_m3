@@ -1,27 +1,6 @@
 {
   "dependencies": {
-    "@popperjs/core": "^2.5.4",
     "bootstrap": "^4.5.3",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.16.1",
     "qunit": "^2.12.0"
-  },
-  "name": "afpa_dwwm_m3",
-  "description": "",
-  "version": "1.0.0",
-  "main": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bluubluuo/afpa_dwwm_m3.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bluubluuo/afpa_dwwm_m3/issues"
-  },
-  "homepage": "https://github.com/bluubluuo/afpa_dwwm_m3#readme"
+  }
 }

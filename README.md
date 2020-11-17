@@ -10,7 +10,7 @@
 1. Cloner le dépot
 2. Installer les dépendances:
 
-<p>Exécuter la commande 'npm install -g'</p>
+<p>Exécuter la commande 'npm install'</p>
 
 ## Documentation
 
@@ -20,13 +20,8 @@
 4. Documentation [Popper](https://popper.js.org/docs/v2/)
 5. Documentation [QUnit](https://qunitjs.com/intro/#in-the-browser)
 
-## Equipe N.B.L.S
+## Equipe N.B.L
 
 * Nada
 * Benoit
 * Lassina
-* Syndie
-
-### Lien
-
-[Netlify](https://distracted-mcclintock-85d89d.netlify.app)
