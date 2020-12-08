@@ -27,8 +27,7 @@ function Panier()
     this.ajouterArticle = function(code, qte, prix)
     { 
         var index = this.getArticle(code);
-        if (index == -1) this.liste.push(new LignePanier(code, qte, prix)); // ici mon local storage
-
+        if (index == -1) this.liste.push(new LignePanier(code, qte, prix)); 
         else this.liste[index].ajouterQte(qte);
     }
     this.getPrixPanier = function()

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Comic book</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark p-3 ">
+            <div class="dropdown ">
+                <a href="#" class="dropdown-toggle nav " data-toggle="dropdown" class="Text"> connection
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <div class="container col-sm-12" style="padding: 5px;">
+                        <h4>Log In</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="indentifiant">indentifiant:</label>
+                                <input type="text" class="form-control input" id="identifiant" placeholder="identifiant" name="id"
+                                style="width : 200px; text-align : center;">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control input" id="pwd" placeholder="Enter password" name="pwd"
+                                style="width : 200px; text-align : center;">
+                            </div>
+                            <button type="submit" name="connect" id="submit" class="btn btn-dark">Submit</button>
+                            <span class="form-text text-muted" id="erreur"></span>
+                            <span class="form-text text-muted" id="erreur2"></span>
+                        </form>
+                    </div>
+                </ul>
+            </div>
+            <a href="./index.html" class="nav">Accueil</a>
+            <a href="./comic-book-list.html" class="nav">Liste des BD</a>
+            <a href="./sign-up.html" class="nav">inscription</a>
+            <a href="./shopping-cart.html" class="nav">Panier d'achat</a>
+        </nav>
+    </header>
+    <main>
+    <!-- Début !!!! mettre produit ici test de la liste produit -->
+    <section class="float-left">
+        <article class="col-sm-12 col-md-20 col-md-offset-1">
+            <legend>Produit </legend>
+            <label class="col-lg-3">Identifiant</label>
+            <input type="number" id="id" style="width:120px" class="input-sm form-control"></input>
+            <label class="col-lg-3">Quantité</label>
+            <input type="number" id="qte" style="width:120px" class="input-sm form-control"></input>
+            <label class="col-lg-3">Prix</label>
+            <input type="number" id="prix" style="width:120px" class="input-sm form-control"></input>
+            <button class="btn btn-primary btn-sm" onclick="ajouter()">
+                <span>
+                    <i class="fas fa-shopping-cart"></i>
+                </span>Ajouter au panier
+            </button>
+        </article>
+    </section>
+    <br>
+    <br>
+    <!-- FIN !!!! mettre produit ici -->
+    <!-- Tableau panier Only Bootstrap--> 
+    <div class="container">
+        <div class="float-sm-right text-center">
+            <br>
+    <div class="card" style="width: 16rem;"> 
+        <div class="card-body">
+            <h5 class="card-title  font-weight-bold">Mon panier</h5>
+                <div class=>
+                    <div class=>
+                        <div class="col-md-0 col-md-offset-1">
+                            <table id="tableau" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text-left small"></th>
+                                        <th scope="col" class="text-left small"></th>
+                                        <th scope="col" class="text-left small"></th>
+                                        <th scope="col" class="text-left small"></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <tbody>
+                                <tr>
+                                    <td><br>
+                                        <label id="cart" class="font-weight-bold small float-left">Prix du panier total :</label>
+                                        <label id="prixTotal" class="text-danger font-weight-bold small float-right"> 0.00 €</label>
+                                        <label id="nbreLignes" hidden></label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!-- Bouton collapse code promo et paiement sécurisé -->
+                <div class="">
+                    <tr>
+                        <td>
+                            <p>
+                                <a class="btn btn-outline-info btn-sm float-left" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Code promo</a>
+                            </p>
+                            <br>
+                            <br>
+                            <div class="collapse" id="collapseExample">
+                                <form class="form-inline">
+                                    <div class="col-xs-1">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control btn-sm small" placeholder="Entrez votre code">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-outline-info btn-sm">Appliquer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form> 
+                            </div>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <!-- Paiement sécurisé -->
+                    <tr>
+                        <td>
+                            <span class="text-sm-left small">Paiement sécurisé</span>
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M11.5 8h-7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1zm-7-1a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7zm0-3a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z">
+                                </path>
+                            </svg>
+                            <img src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                            style="max-width:8%" ; alt="..." class="img-fluid">
+                            <img src="https://www.sephora.fr/on/demandware.static/-/Library-Sites-SephoraV2/default/dw1375da7d/cart/gb.svg"
+                            style="max-width:8%" ; alt="..." class="img-fluid pay">
+                            <img src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                            style="max-width:8%" ; alt="..." class="img-fluid pay">
+                            <img src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                            style="max-width:8%" ; alt="..." class="img-fluid pay">
+                        </td>
+                    </tr>
+                    <img src="https://d2homsd77vx6d2.cloudfront.net/cache/5/f/5fdcd40e4c194047c5a590ca2cc78aaa.png" class="img-fluid float-right" alt="Responsive image" style="max-width:40%" href="#">
+                    <br><br><br><br>
+                    <!-- Début !!! -->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        Procéder au paiement
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Procéder au paiement</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Début du code -->
+                                    <!-- Formulaire -->
+                                    <div class="col-md-8 order-md-1">
+                                        <form class="needs-validation" novalidate="">
+                                            <!-- Collapse accordéon Info de livraison -->
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                <h4 class="mb-3 text-center">Informations de livraison</h4>
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6 mb-3">
+                                                                    <label for="nom">Nom</label>
+                                                                    <input type="text" class="form-control" id="nom" placeholder="" value="" required="">
+                                                                    <div class="invalid-feedback">
+                                                                        Nom valide svp.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mb-3">
+                                                                    <label for="prenom">Prénom</label>
+                                                                    <input type="text" class="form-control" id="prenom" placeholder="" value="" required="">
+                                                                    <div class="invalid-feedback">
+                                                                        Prénom valide svp.
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="mb-3">
+                                                                <label for="email">Email <span class="text-muted">(Obligatoire)</span></label>
+                                                                <input type="email" class="form-control" id="email" placeholder="vous@example.fr">
+                                                                <div class="invalid-feedback">
+                                                                    Entrez un Email valide pour les mise à jours d'éxpédition.
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="addresse">Adresse</label>
+                                                                <input type="text" class="form-control" id="addresse" placeholder="1 Rue Coucoucava" required="">
+                                                                <div class="invalid-feedback">
+                                                                Entrez votre adresse svp.
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="addresse2">
+                                                                    Addresse 2
+                                                                    <span class="text-muted">(Batiment, appartement, lieu dit...)</span>
+                                                                </label>
+                                                                <input type="text" class="form-control" id="addresse2" placeholder="Batiment, appartement, lieu dit...">
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-5 mb-3">
+                                                                    <label for="pays">Pays</label>
+                                                                    <select class="custom-select d-block w-100" id="pays" required="">
+                                                                        <option value="">Choisir...</option>
+                                                                        <option>France metropolitaine</option>
+                                                                        <option>Monaco</option>
+                                                                        <option>Belgique</option>
+                                                                        <option>Suisse</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">
+                                                                        Selectionnez un pays svp.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="region">Région</label>
+                                                                    <select class="custom-select d-block w-100" id="region" required="">
+                                                                        <option value="">Choisir...</option>
+                                                                        <option>Auvergne-Rhône-Alpes</option>
+                                                                        <option>Bourgogne-Franche-Comté</option>
+                                                                        <option>Bretagne</option>
+                                                                        <option>Centre-Val de Loire</option>
+                                                                        <option>Corse</option>
+                                                                        <option>Grand Est</option>
+                                                                        <option>Hauts-de-France</option>
+                                                                        <option>Île-de-France</option>
+                                                                        <option>Normandie</option>
+                                                                        <option>Nouvelle-Aquitaine</option>
+                                                                        <option>Occitanie</option>
+                                                                        <option>Pays de la Loire</option>
+                                                                        <option>Provence-Alpes-Côte d'Azur</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">
+                                                                        Selectionnez une région svp.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="codePostale">Code postale</label>
+                                                                    <input type="text" class="form-control" id="codePostale" placeholder="" required="">
+                                                                    <div class="invalid-feedback">
+                                                                        Entrez un code postale svp.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="mb-4">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="meme-addresse">
+                                                                <label class="custom-control-label" for="meme-addresse">L'adresse de livraison est la même que l'adresse de facturation</label>
+                                                            </div>
+                                                            <hr class="mb-4">
+                                                        </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Collapse accordéon Mode de paiement -->
+                                                        <div class="card">
+                                                            <div class="card-header" id="headingTwo">
+                                                            <h2 class="mb-0">
+                                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                    <h4 class="mb-3 text-center">Mode de paiement</h4>
+                                                                </button>
+                                                            </h2>
+                                                        </div>
+                                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                            <div class="card-body">
+                                                                <div class="d-block my-3">
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input id="carte" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                                                                        <label class="custom-control-label" for="carte">Carte de crédit</label>
+                                                                    </div>
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                                                        <label class="custom-control-label" for="paypal">PayPal</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6 mb-3">
+                                                                        <label for="cc-nom">Nom complet du porteur de la carte</label>
+                                                                        <input type="text" class="form-control" id="cc-nom" placeholder="" required="">
+                                                                        <small class="text-muted">Nom complet du porteur de la carte</small>
+                                                                        <div class="invalid-feedback">
+                                                                            Nom obligatoire
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-3">
+                                                                        <label for="cc-numero">Numéro de carte</label>
+                                                                        <input type="text" class="form-control" id="cc-numero" placeholder="" required="">
+                                                                        <div class="invalid-feedback">
+                                                                            Numéro obligatoire
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-3 mb-3">
+                                                                        <label for="cc-expiration">Date d'expiration</label>
+                                                                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                                                                        <div class="invalid-feedback">
+                                                                            Date obligatoire
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3 mb-3">
+                                                                        <label for="cc-cvv">CVV</label>
+                                                                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                                                                        <div class="invalid-feedback">
+                                                                        Code de securité obligatoire
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <hr class="mb-4">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="enregistrer-info">
+                                                            <label class="custom-control-label" for="enregistrer-info">Enregistrer mes informations pour la prochaine fois</label>
+                                                        </div>
+                                                        <br>
+                                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Commander</button>
+                                                        <br>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        <!-- Fin du code -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <!-- Fin !!!! -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer class="bg-dark p-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-white">
+                <!-- Titre -->
+                <h1 class="text-center mt-5">Météo</h1>
+                <!-- Ville / Temperature -->
+                    <div class="text-center">
+                        <span id="ville">paris</span>
+                        <div id="temperature">
+                            <span id="temperature_label">xx.x</span> °C
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+            <!-- Changer de ville -->
+                <div id="changer" class="mt-2 text-center p-3 text-white font-weight-bold text-uppercase d-inline-block">
+                    <p>Changer de ville</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript panier bon courage-->
+    <script src="./js/shopping-cart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        // Ajout et suppression
+        function ajouter() {
+            var code = parseFloat(document.getElementById("id").value);
+            var qte = parseFloat(document.getElementById("qte").value);
+            var prix = parseFloat(document.getElementById("prix").value);
+            var monPanier = new Panier();
+            monPanier.ajouterArticle(code, qte, prix);
+            var tableau = document.getElementById("tableau");
+            var longueurTab = parseInt(document.getElementById("nbreLignes").innerHTML);
+            if (longueurTab > 0) {
+                for(var i = longueurTab ; i > 0  ; i--) {
+                    monPanier.ajouterArticle(parseFloat(tableau.rows[i].cells[0].innerHTML), parseFloat(tableau.rows[i].cells[1].innerHTML), parseFloat(tableau.rows[i].cells[2].innerHTML));
+                    tableau.deleteRow(i);
+                }
+            }
+            var longueur = monPanier.liste.length;
+            for(var i = 0 ; i < longueur ; i++) {
+                var ligne = monPanier.liste[i];
+                var ligneTableau = tableau.insertRow(-1);
+                var colonne1 = ligneTableau.insertCell(0);
+                colonne1.innerHTML += ligne.getCode();
+                var colonne2 = ligneTableau.insertCell(1);
+                colonne2.innerHTML += ligne.qteArticle;
+                var colonne3 = ligneTableau.insertCell(2);
+                colonne3.innerHTML += ligne.prixArticle;
+                var colonne4 = ligneTableau.insertCell(3);
+                colonne4.innerHTML = ligne.getPrixLigne() + "€"; //ici ma devise !!!!! ;
+                var colonne5 = ligneTableau.insertCell(4);
+                colonne5.innerHTML += "<button class=\"btn btn-danger btn-sm\" type=\"submit\" onclick=\"supprimer(this.parentNode.parentNode.cells[0].innerHTML)\"><span><i class=\"far fa-trash-alt\"></i></span> </button>";
+            }
+            document.getElementById("prixTotal").innerHTML = monPanier.getPrixPanier();
+            document.getElementById("nbreLignes").innerHTML = longueur;
+        }
+        function supprimer(code) {
+            var monPanier = new Panier();
+            var tableau = document.getElementById("tableau");
+            var longueurTab = parseFloat(document.getElementById("nbreLignes").innerHTML);
+            if (longueurTab > 0) {
+                for(var i = longueurTab ; i > 0  ; i--) {
+                    monPanier.ajouterArticle(parseFloat(tableau.rows[i].cells[0].innerHTML), parseFloat(tableau.rows[i].cells[1].innerHTML), parseFloat(tableau.rows[i].cells[2].innerHTML));
+                    tableau.deleteRow(i);
+                }
+            }
+            monPanier.supprimerArticle(code);
+            var longueur = monPanier.liste.length;
+            for(var i = 0 ; i < longueur ; i++) {
+                var ligne = monPanier.liste[i];
+                var ligneTableau = tableau.insertRow(-1);
+                var colonne1 = ligneTableau.insertCell(0);
+                colonne1.innerHTML += ligne.getCode();
+                var colonne2 = ligneTableau.insertCell(1);
+                colonne2.innerHTML += ligne.qteArticle;
+                var colonne3 = ligneTableau.insertCell(2);
+                colonne3.innerHTML += ligne.prixArticle;
+                var colonne4 = ligneTableau.insertCell(3);
+                colonne4.innerHTML += ligne.getPrixLigne();
+                var colonne5 = ligneTableau.insertCell(4);
+                colonne5.innerHTML += "<button class=\"btn btn-danger btn-sm\" type=\"submit\" onclick=\"supprimer(this.parentNode.parentNode.cells[0].innerHTML)\"><span><i class=\"far fa-trash-alt\"></i></span> </button>";
+            }
+            document.getElementById("prixTotal").innerHTML = monPanier.getPrixPanier();
+            document.getElementById("nbreLignes").innerHTML = longueur;
+        }
+    </script>
+</body>
+
+</html>

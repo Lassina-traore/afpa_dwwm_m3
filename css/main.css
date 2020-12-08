@@ -1,0 +1,19 @@
+.nav {
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  transition: 0.5s;
+}
+
+#changer {
+  background: rgba(178, 223, 251, 0.3);
+  cursor: pointer;
+}
+
+#ville {
+  text-transform: capitalize;
+}
+
+.titre {
+  border-radius: 10px;
+}
