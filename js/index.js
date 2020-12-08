@@ -69,28 +69,32 @@ recevoirTemperature(villeChoisie);
 
   const url ="https://api.openweathermap.org/data/2.5/weather?q="+ ville +"&appid=dc8c9152e8adaad0ec8bf635818c0d42&units=metric";
 
-  let requete = new XMLHttpRequest();
-    requete.open('GET', url);
-    requete.responseType = 'json';
-    requete.send();
+  $.ajax({
 
-    requete.onload = function() {
-    if (requete.readyState === XMLHttpRequest.DONE) {
-      if (requete.status === 200) {
-      let reponse = requete.response;
-      let temperature = reponse.main.temp;
-      let ville       = reponse.name;
-      $("#temperature_label").text(temperature);
-      $("#ville").text(ville);
-    }
+    url: url,
 
-    else {
-            alert('Un problème est intervenu, merci de revenir plus tard.');
-          }
-        }
+    dataType: "json",
+
+
+    success: function (objData) {
+
+      {
+        var ville = objData.name;
+        var temperature = objData.main.temp;
+        $("#temperature_label").text(temperature);
+        $("#ville").text(ville);
+
       }
+    },
+    error: function (jqXHR) {
+
+      alert('Un problème est intervenu, merci de revenir plus tard.');
+
     }
-//test jqery.AJAX
+
+  });
+}
+
 
 
 
