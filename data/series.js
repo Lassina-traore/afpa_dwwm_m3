@@ -1,0 +1,11 @@
+let series = new Map();
+series.set("2", { nom: "Spirou et Fantasio" });
+series.set("6", { nom: "Marsupilami" });
+series.set("9", { nom: "Lanfeust de Troy" });
+series.set("10", { nom: "XIII" });
+series.set("13", { nom: "Marlysa" });
+series.set("16", { nom: "Trolls de Troy" });
+series.set("17", { nom: "Le chant Excalibur" });
+series.set("18", { nom: "Lanfeust des étoiles" });
+series.set("22", { nom: "La quête de oiseau du temps" });
+series.set("23", { nom: "Titeuf" });
