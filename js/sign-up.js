@@ -61,4 +61,13 @@ $(document).ready(function () {
       $erreur3.text("");
     }
   }
+  QUnit.test("test", function(assert) {
+
+
+    assert.ok(verifier);
+    assert.ok($confirmation);
+    assert.ok($envoi);
+    assert.ok($champs2);
+
+});
 });
