@@ -61,7 +61,7 @@ $(document).ready(function () {
       $erreur3.text("");
     }
   }
-  QUnit.test("test", function(assert) {
+  QUnit.test("test", function (assert) {
 
 
     assert.ok(verifier);
@@ -69,5 +69,5 @@ $(document).ready(function () {
     assert.ok($envoi);
     assert.ok($champs2);
 
-});
+  });
 });
